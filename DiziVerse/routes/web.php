@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FilmController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FilmController::class, 'index'])->name('films.index');
+Route::get('/film/{film:imdb_id}', [FilmController::class, 'show'])->name('films.show');
