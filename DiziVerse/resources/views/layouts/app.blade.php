@@ -3,11 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>DiziVerse</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    
+    @include ('partials.header')
+    
 </head>
 <body class="bg-gray-100 text-gray-800">
-    <div class="container mx-auto py-8">
+     <nav>
+        @auth('siteuser')
+            <a href="{{ route('siteuser.profile') }}">Profil</a>
+            <form method="POST" action="{{ route('siteuser.logout') }}" style="display:inline;">
+                @csrf
+                <button type="submit">Çıkış</button>
+            </form>
+        @else
+            <a href="{{ route('siteuser.login') }}">Giriş</a>
+            <a href="{{ route('siteuser.register') }}">Kayıt</a>
+        @endauth
+    </nav>
+
+    <hr>
+    
         @yield('content')
-    </div>
+   
+    @include('partials.footer')
+       @stack('scripts')
 </body>
 </html>

@@ -35,12 +35,18 @@ return [
     |
     */
 
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+   'guards' => [
+    'web' => [
+        'driver'   => 'session',
+        'provider' => 'users',         // Varsayılan, admin paneli için
     ],
+
+    'siteuser' => [
+        'driver'   => 'session',
+        'provider' => 'site_users',    // Site ziyaretçileri için
+    ],
+],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -60,16 +66,16 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+    'users' => [
+        'driver' => 'eloquent',
+        'model'  => App\Models\User::class,        // Admin paneli
     ],
+
+    'site_users' => [
+        'driver' => 'eloquent',
+        'model'  => App\Models\SiteUser::class,    // Site ziyaretçileri
+    ],
+],
 
     /*
     |--------------------------------------------------------------------------
