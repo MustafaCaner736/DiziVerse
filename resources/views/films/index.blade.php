@@ -21,7 +21,12 @@
             background: rgba(0, 0, 0, 0.61);
             pointer-events: auto;
             /* sadece buton tıklansın */
+
         }
+
+        html, body {
+        overflow-x: hidden!important; /* sadece dikey scroll kapatılır */
+}
 
         .home__carousel .owl-stage-outer {
             overflow: visible;

@@ -27,6 +27,7 @@
         {{ $errors->first() }}
     </div>
 @endif
+
     @yield('content')
 
     @include('partials.footer')
